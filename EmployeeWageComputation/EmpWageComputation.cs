@@ -63,14 +63,16 @@ namespace EmployeeWageComputation
         public const int Is_FullTime = 2;
         public const int Emp_Wage_Per_Hour = 20;
         public const int Working_days = 20;
+        public const int Total_Working_Hours = 100;
 
         public void EmployeeWageUsingSwitch()
         {
 
-            int emphrs = 0, empwage = 0, totalwage = 0;
+            int emphrs = 0, totalwage = 0, day = 1, totalhours=0;
 
-            for (int day = 1; day <= Working_days; day++)
-            {
+            while(totalhours<=Total_Working_Hours && day<=Working_days)
+            {   
+               
                 Random random = new Random();
                 int empcheck = random.Next(0, 3);
                 switch (empcheck)
@@ -86,10 +88,11 @@ namespace EmployeeWageComputation
                         emphrs = 0;
                         break;
                 }
-                empwage = emphrs * Emp_Wage_Per_Hour;
-                totalwage += empwage;
-                Console.WriteLine("Employee wage is {0}", empwage);
+                totalhours += emphrs;
+                Console.WriteLine("Day:"+ day + "Emp Hrs" +emphrs);
+                day++;   
             }
+            totalwage=totalhours*Emp_Wage_Per_Hour;
             Console.WriteLine("Total Wage is " + totalwage);
         }
 
