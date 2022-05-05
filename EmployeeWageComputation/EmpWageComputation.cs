@@ -10,10 +10,12 @@ namespace EmployeeWageComputation
     {
         int WAGE_PER_HOUR = 20;
         int FULL_DAY_HOUR = 8;
-        bool IsPresent;
+        int PART_TIME_HOUR = 4;
+        bool IsPresent; 
+        bool IsFullTime;
+        Random generatenum = new Random();
         public void CheckEmpPresentOrNot()
         {
-            Random generatenum=new Random();
             int num=generatenum.Next(0,2);
             if (num == 1) 
             {
@@ -26,17 +28,32 @@ namespace EmployeeWageComputation
                 Console.WriteLine("Employee is absent");
             }
         }
+        public void CheckEmpFullOrPartTime()
+        {
+            int num = generatenum.Next(0, 2);
+            if (num == 1)
+            {
+                IsFullTime = true;
+                Console.WriteLine("Full Time Employee ");
+            }
+            else
+            {
+                IsFullTime = false;
+                Console.WriteLine("Part Time Employee ");
+            }
+        }
         public void CalcEmpDailyWage()
         {
             int empDailyWage=0;
-            if (IsPresent)
+            if (IsPresent && IsFullTime)
             {
                 empDailyWage = WAGE_PER_HOUR * FULL_DAY_HOUR;
     
             }
-            else
+            else if (IsPresent && !IsFullTime)
             {
-                empDailyWage = 0;
+                empDailyWage = WAGE_PER_HOUR * PART_TIME_HOUR;
+               
             }
             Console.WriteLine("Employee Daily Wage is {0}", empDailyWage);
         }
