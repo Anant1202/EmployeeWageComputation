@@ -60,32 +60,38 @@ namespace EmployeeWageComputation
 
 
         public const int Is_PartTime = 1;
-        public const int Is_FullTime = 2; 
+        public const int Is_FullTime = 2;
         public const int Emp_Wage_Per_Hour = 20;
+        public const int Working_days = 20;
 
         public void EmployeeWageUsingSwitch()
         {
 
-            int emphrs = 0, empwage = 0;
+            int emphrs = 0, empwage = 0, totalwage = 0;
 
-            Random random = new Random();
-            int empcheck = random.Next(0, 3);
-            switch(empcheck)
+            for (int day = 1; day <= Working_days; day++)
             {
-                case Is_PartTime:
-                    emphrs = 4;
-                    break;
-                case Is_FullTime:
-                    emphrs = 8;
-                    break;
+                Random random = new Random();
+                int empcheck = random.Next(0, 3);
+                switch (empcheck)
+                {
+                    case Is_PartTime:
+                        emphrs = 4;
+                        break;
+                    case Is_FullTime:
+                        emphrs = 8;
+                        break;
 
-                default:
-                    Console.WriteLine("Employee is absent");
-                    break;
+                    default:
+                        emphrs = 0;
+                        break;
+                }
+                empwage = emphrs * Emp_Wage_Per_Hour;
+                totalwage += empwage;
+                Console.WriteLine("Employee wage is {0}", empwage);
             }
-            empwage = emphrs * Emp_Wage_Per_Hour;
-            Console.WriteLine("Employee wage is {0}", empwage);
+            Console.WriteLine("Total Wage is " + totalwage);
         }
-    }
 
+    }
 }
