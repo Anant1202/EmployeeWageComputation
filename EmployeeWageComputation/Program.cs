@@ -8,9 +8,10 @@ namespace EmployeeWageComputation
         {
             Console.WriteLine("Welcome to Employee Wage Computation Program");
             EmpWageComputation emp = new EmpWageComputation();
-            emp.CheckEmpPresentOrNot();
-            emp.CheckEmpFullOrPartTime();
-            emp.CalcEmpDailyWage();
+            emp.EmployeeWageUsingSwitch();
+            //emp.CheckEmpPresentOrNot();
+            //emp.CheckEmpFullOrPartTime();
+            //emp.CalcEmpDailyWage();
             
 
         }
